@@ -42,7 +42,10 @@ def orbit_system(p, cx, cy, scale=1):
 def hero(p, compact):
     w,h=(600,776) if compact else (1200,530)
     body=surface(p,w,h,True)+motion(w)
-    body+='<g clip-path="url(#panel-clip)">'+rect(30,76,20,h-120,p['cyan'],radius=0,extra='opacity=".035" class="scan"')+'</g>'
+    # Keep the sweep inside the artwork, clear of every typography region.
+    sx,sy,sw,sh=(148,384,304,268) if compact else (752,80,432,360)
+    body+='<defs><clipPath id="hero-artwork-scan" clipPathUnits="userSpaceOnUse">'+rect(sx,sy,sw,sh,'#fff',radius=0)+'</clipPath></defs>'
+    body+='<g clip-path="url(#hero-artwork-scan)" data-hero-scan="artwork">'+rect(30,sy,20,sh,p['cyan'],radius=0,extra='opacity=".035" class="scan"')+'</g>'
     x=32 if compact else 48
     body+=text(x,49,PROFILE['identity'],22,p['cyan'],700,'letter-spacing="2.8"')
     if compact:
