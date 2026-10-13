@@ -190,7 +190,7 @@ def dashboard(data, theme, mobile=False):
     content+=text(28,height-25,f'SNAPSHOT / {date} UTC',22 if mobile else 18,p['muted'])
     description='; '.join(f'{label.lower()}: {value}' for label,value in values)
     description+='. Primary languages count non-fork project repositories and exclude this profile. Weekly bars show actual calendar contribution counts. Updated '+date+'.'
-    return svg(width,height,content,'NEURAL / GitHub engineering signal',description)
+    return svg(width,height,content,'HUMAN / GitHub engineering signal',description)
 
 
 def calendar_svg(data,theme,mobile=False):

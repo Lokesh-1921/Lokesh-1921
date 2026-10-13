@@ -1,4 +1,4 @@
-"""Generate NEURAL // LOKESH graphics with the Python standard library."""
+"""Generate HUMAN // LOKESH graphics with the Python standard library."""
 from html import escape
 from pathlib import Path
 import math
@@ -96,20 +96,20 @@ def constellation(p, cx, cy, scale=1):
         if i in (2,6,9):
             content += f'<circle cx="{x}" cy="{y}" r="12" fill="none" stroke="{color}" stroke-opacity=".3" class="breathe"/>'
     content += f'<circle r="24" fill="{p["bg"]}" stroke="url(#spectrum)"/>'
-    content += f'<path d="M-10 7V-7L10 7V-7" fill="none" stroke="{p["text"]}" stroke-width="2"/>'
+    content += f'<path d="M-9-8V8M9-8V8M-9 0H9" fill="none" stroke="{p["text"]}" stroke-width="2"/>'
     return content+'</g>'
 
 
 def hero(p, mobile):
     w,h=(600,650) if mobile else (1200,480)
     content=surface(p,w,h,True)+motion()
-    content += text(32 if mobile else 48,48,"NEURAL // LOKESH",22,p["cyan"],700,'letter-spacing="3"')
+    content += text(32 if mobile else 48,48,"HUMAN // LOKESH",22,p["cyan"],700,'letter-spacing="3"')
     if mobile:
         content += text(28,173,"LOKESH",125,p["text"],700,'letter-spacing="-5"')
         content += text(32,225,"Turning curiosity into",28,p["text"],400)
         content += text(32,262,"intelligent systems.",28,p["muted"])
         content += text(32,320,"AI ENGINEERING / MACHINE LEARNING",22,p["cyan"],600)
-        content += text(32,354,"COMPUTER VISION",22,p["cyan"],600)
+        content += text(32,354,"GENERATIVE AI",22,p["cyan"],600)
         content += constellation(p,300,482,.60)
         content += text(300,616,"INTELLIGENCE IN MOTION",22,p["muted"],500,'text-anchor="middle" letter-spacing="2"')
     else:
@@ -117,10 +117,10 @@ def hero(p, mobile):
         content += text(42,219,"LOKESH",145,p["text"],700,'letter-spacing="-6"')
         content += text(48,285,"Turning curiosity into intelligent systems.",30,p["muted"])
         content += text(48,351,"AI ENGINEERING / MACHINE LEARNING",22,p["cyan"],600,'letter-spacing=".6"')
-        content += text(48,387,"COMPUTER VISION",22,p["cyan"],600,'letter-spacing=".6"')
+        content += text(48,387,"GENERATIVE AI",22,p["cyan"],600,'letter-spacing=".6"')
         content += constellation(p,971,247,1)
         content += f'<path d="M48 426H1152" stroke="{p["border"]}"/>'
-        content += text(48,455,"PERCEPTION / RETRIEVAL / USEFUL SOFTWARE",22,p["muted"],500,'letter-spacing="1"')
+        content += text(48,455,"GENERATION / RETRIEVAL / USEFUL SOFTWARE",22,p["muted"],500,'letter-spacing="1"')
         content += text(1152,455,"PYTHON AT THE CORE",22,p["muted"],500,'text-anchor="end" letter-spacing="1"')
     return w,h,content
 
@@ -130,7 +130,7 @@ def role(p,mobile):
     # A single immutable role heading makes simultaneous titles impossible.
     content=motion()
     content += text(w/2,55 if mobile else 48,"ASPIRING AI ENGINEER",32,p["text"],600,'text-anchor="middle" letter-spacing="1.2" data-role-title="true"')
-    content += text(w/2,91 if mobile else 79,"Python · Computer Vision · Machine Learning",23 if mobile else 22,p["muted"],400,'text-anchor="middle"')
+    content += text(w/2,91 if mobile else 79,"Python · Machine Learning · Generative AI",23 if mobile else 22,p["muted"],400,'text-anchor="middle"')
     y=122 if mobile else 103
     content += f'<path d="M{w/2-88} {y}H{w/2+88}" stroke="{p["border"]}"/>'
     content += f'<path d="M{w/2-88} {y}H{w/2+88}" stroke="{p["cyan"]}" stroke-width="2" stroke-dasharray="6 170" class="signal"/>'
@@ -259,9 +259,9 @@ def lab(p,mobile):
     content=surface(p,w,h,True)
     content+=text(30,46,"THE INTELLIGENCE LAB",24,p["text"],600,'letter-spacing="1.5"')
     topics=[
-        ("01 / PERCEPTION","Learning to see",["Deep learning for","visual understanding."]),
-        ("02 / GROUNDING","Learning to reason",["Retrieval for grounded","generative systems."]),
-        ("03 / AGENCY","Learning to act",["Tools, explicit context,","and bounded workflows."]),
+        ("01 / GROUNDING","Learning to reason",["Retrieval for grounded","generative systems."]),
+        ("02 / AGENCY","Learning to act",["Tools, explicit context,","and bounded workflows."]),
+        ("03 / PERCEPTION","Also exploring",["Deep learning for","visual understanding."]),
     ]
     if mobile:
         content+=text(30,78,"LEARNING DIRECTIONS",22,p["cyan"],600,'letter-spacing="1.5"')
@@ -285,7 +285,7 @@ def footer(p,mobile):
     w,h=(600,300) if mobile else (1200,234)
     content=surface(p,w,h,True)+motion()
     x=30 if mobile else 42
-    content+=text(x,46,"NEURAL // LOKESH",22,p["cyan"],600,'letter-spacing="2"')
+    content+=text(x,46,"HUMAN // LOKESH",22,p["cyan"],600,'letter-spacing="2"')
     content+=text(x,114 if mobile else 115,"Curiosity drives the code.",38 if mobile else 44,p["text"],600,'letter-spacing="-1"')
     content+=text(x,171 if mobile else 176,"Impact defines the work.",38 if mobile else 44,p["text"],600,'letter-spacing="-1"')
     content+=text(x,253 if mobile else 210,"LET'S BUILD SOMETHING USEFUL.",23 if mobile else 22,p["muted"],500,'letter-spacing="1"')
@@ -301,11 +301,11 @@ def main():
         for mobile in (False,True):
             suffix="-mobile" if mobile else ""
             for name,build,title,description in [
-                ("hero",hero,"NEURAL // LOKESH — Intelligence in Motion","Lokesh. AI engineering, machine learning, computer vision. Turning curiosity into intelligent systems."),
-                ("intro",role,"Aspiring AI Engineer","One static role heading with decorative animated signals. Python, computer vision, machine learning. No animated or stacked role text."),
+                ("hero",hero,"HUMAN // LOKESH — Intelligence in Motion","Lokesh. AI engineering, machine learning, generative AI. Turning curiosity into intelligent systems."),
+                ("intro",role,"Aspiring AI Engineer","One static role heading with decorative animated signals. Python, machine learning, generative AI. No animated or stacked role text."),
                 ("stack",stack,"Tools used in the work","Core languages, vision and retrieval, APIs and applications. Used tools are not claims of mastery."),
-                ("lab",lab,"The Intelligence Lab","Learning directions: visual deep learning, grounded generation, and tool-based workflows."),
-                ("footer",footer,"Curiosity drives the code. Impact defines the work.","NEURAL // LOKESH. An invitation to build something useful together."),
+                ("lab",lab,"The Intelligence Lab","Learning directions: grounded generation and tool-based workflows, with visual deep learning as a secondary exploration."),
+                ("footer",footer,"Curiosity drives the code. Impact defines the work.","HUMAN // LOKESH. An invitation to build something useful together."),
             ]:
                 w,h,content=build(p,mobile)
                 save(f"brand/{name}{suffix}-{theme}.svg",w,h,content,title,description)
@@ -324,7 +324,7 @@ def main():
         content+=text(52,31,label,18,p["text"],500)
         content+=f'<path d="M165 31L177 19M165 19H177V31" fill="none" stroke="{p["muted"]}" stroke-width="1.5"/>'
         save("brand/"+name+".svg",210,48,content,label,"Connect with Lokesh on "+name+".")
-    print("Built NEURAL brand, immutable role, project cards, and learning lab.")
+    print("Built HUMAN brand, immutable role, project cards, and learning lab.")
 
 
 if __name__=="__main__":

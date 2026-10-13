@@ -7,7 +7,7 @@
   <source media="(max-width: 900px) and (prefers-color-scheme: light)" srcset="assets/brand/hero-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/brand/hero-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/brand/hero-light.svg">
-  <img src="assets/brand/hero-dark.svg" width="100%" alt="NEURAL // LOKESH — Intelligence in Motion. AI engineering, machine learning, and computer vision. Turning curiosity into intelligent systems.">
+  <img src="assets/brand/hero-dark.svg" width="100%" alt="HUMAN // LOKESH — Intelligence in Motion. AI engineering, machine learning, and generative AI. Turning curiosity into intelligent systems.">
 </picture>
 
 <p align="center">
@@ -20,7 +20,7 @@
     <source media="(max-width: 900px) and (prefers-color-scheme: light)" srcset="assets/brand/intro-mobile-light.svg">
     <source media="(prefers-color-scheme: dark)" srcset="assets/brand/intro-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset="assets/brand/intro-light.svg">
-    <img src="assets/brand/intro-dark.svg" width="100%" alt="Aspiring AI Engineer. Python · Computer Vision · Machine Learning. The role text stays fixed; only the decorative signal moves.">
+    <img src="assets/brand/intro-dark.svg" width="100%" alt="Aspiring AI Engineer. Python · Machine Learning · Generative AI. The role text stays fixed; only the decorative signal moves.">
   </picture>
 </p>
 
@@ -32,14 +32,14 @@
 
 ## 01 / THE ENGINEER BEHIND THE CODE
 
-I'm **Lokesh**, a Computer Science student specializing in **AI & ML**, with **Python** at the center of my work. I'm drawn to computer vision and the engineering that turns models, data, and ideas into useful software.
+I'm **Lokesh**, a Computer Science student specializing in **AI & ML**, with **Python** at the center of my work. I'm focused on learning to build intelligent systems and useful software, with a growing interest in **generative AI**.
 
-My projects explore stereo geometry and motion, AI-assisted healthcare workflows, and interfaces that make complex information easier to use. I'm developing my foundations while exploring deep learning, generative AI, and agentic systems.
+My projects explore AI-assisted healthcare workflows, document retrieval, and interfaces that make complex information easier to use. I'm developing my foundations in machine learning and exploring generative AI and agentic systems. I also explore computer vision through stereo geometry and motion analysis.
 
 ~~~python
 class Lokesh:
     language = "Python"
-    focus = "AI / ML / vision"
+    focus = "AI / ML / GenAI"
     loop = "Build. Test. Refine."
 ~~~
 
@@ -127,10 +127,10 @@ A responsive healthcare-event website with typed content modules, a keyboard-acc
   <source media="(max-width: 900px) and (prefers-color-scheme: light)" srcset="assets/brand/lab-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/brand/lab-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/brand/lab-light.svg">
-  <img src="assets/brand/lab-dark.svg" width="100%" alt="Learning directions: Perception — deep learning for visual understanding. Grounding — retrieval for grounded generative systems. Agency — tools, explicit context, and bounded workflows.">
+  <img src="assets/brand/lab-dark.svg" width="100%" alt="Learning directions: Grounding — retrieval for grounded generative systems. Agency — tools, explicit context, and bounded workflows. Perception — a secondary exploration of deep learning for visual understanding.">
 </picture>
 
-I'm exploring **deep learning for visual understanding**, **grounded generative AI**, and **agent workflows with explicit context and tool boundaries**. These are learning directions that connect naturally to my vision and retrieval projects.
+I'm exploring **grounded generative AI** and **agent workflows with explicit context and tool boundaries**, alongside a secondary interest in deep learning for visual understanding. These learning directions connect to my retrieval and vision projects.
 
 ## 05 / ENGINEERING SIGNAL
 
@@ -172,7 +172,7 @@ I'm exploring **deep learning for visual understanding**, **grounded generative 
 
 ## 06 / BUILD WITH INTENT
 
-I'm interested in AI/ML collaborations, computer-vision experiments, and software that makes a real problem easier to solve.
+I'm interested in AI/ML collaborations, generative AI projects, and software that makes a real problem easier to solve.
 
 **[Connect on LinkedIn](https://www.linkedin.com/in/lokesh-ks/)** · **[Explore the source](https://github.com/Lokesh-1921?tab=repositories)**
 
@@ -185,5 +185,5 @@ I'm interested in AI/ML collaborations, computer-vision experiments, and softwar
   <source media="(max-width: 900px) and (prefers-color-scheme: light)" srcset="assets/brand/footer-mobile-light.svg">
   <source media="(prefers-color-scheme: dark)" srcset="assets/brand/footer-dark.svg">
   <source media="(prefers-color-scheme: light)" srcset="assets/brand/footer-light.svg">
-  <img src="assets/brand/footer-dark.svg" width="100%" alt="NEURAL // LOKESH. Curiosity drives the code. Impact defines the work. Let's build something useful.">
+  <img src="assets/brand/footer-dark.svg" width="100%" alt="HUMAN // LOKESH. Curiosity drives the code. Impact defines the work. Let's build something useful.">
 </picture>

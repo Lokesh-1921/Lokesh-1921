@@ -1,4 +1,4 @@
-# NEURAL // LOKESH — maintenance and provenance
+# HUMAN // LOKESH — maintenance and provenance
 
 This is the existing public profile repository for [Lokesh-1921](https://github.com/Lokesh-1921).
 The root README is the portfolio. No website hosting, JavaScript application, or Pages setup is required.
@@ -7,6 +7,10 @@ The root README is the portfolio. No website hosting, JavaScript application, or
 
 The current tree uses professional, skill-focused branding only. Academic institution identification
 is excluded from the README, graphics, descriptions, and generation code.
+
+The front-facing identity is HUMAN // LOKESH: AI engineering, machine learning, and generative AI.
+The role is ASPIRING AI ENGINEER, supported by Python · Machine Learning · Generative AI.
+Computer vision is retained as a secondary exploration and as verified project evidence, not a primary identity.
 
 Lokesh supplied his Computer Science/AI & ML background, career interests, Python preference,
 photography/gaming interests, and LinkedIn address. The public GitHub account and all ten public
@@ -95,9 +99,9 @@ The Actions were updated to verified Node 24 versions of checkout, upload-artifa
 using full commit pins and Ubuntu 24.04. This avoids the deprecated-runtime and moving-runner notices observed
 in the earlier hosted runs.
 
-The new snake palette and inputs were exercised locally with the pinned official action and an offline
-GraphQL adapter populated from the actual collected calendar. This does not claim live API authentication
-or a hosted run of the revised workflow. Initial images are already committed, avoiding first-run broken paths.
+The snake palette and inputs were exercised locally with the pinned official action and an offline
+GraphQL adapter populated from the actual collected calendar. The subsequent hosted refresh also succeeded
+with these pins and inputs. Initial images are committed, avoiding first-run broken paths.
 
 ## Local maintenance
 
@@ -120,10 +124,11 @@ The profile viewer requires no Python, Node, framework, font service, or package
 
 ## Review and hosted checks
 
-This redesign is prepared as a clean review commit. The previous profile's hosted workflows succeeded;
-the revised README and updated workflow pins require post-publication inspection on GitHub.
-The visual previews use Chromium and GitHub-like Markdown styling, rather than claiming a hosted render
-of an unpublished revision.
+This HUMAN branding refinement is prepared for review and has not been published. The existing workflow
+versions succeeded in hosted validation run 38437560270 and refresh run 38437560254. Their permissions,
+schedule, and pins are unchanged by this content revision. The new README requires post-publication inspection
+on GitHub. Its previews use Chromium and GitHub-like Markdown styling, rather than claiming a hosted render
+of the unpublished revision.
 
 The existing automatic publishing job has already demonstrated write access with the built-in token.
 No new secret or account-setting change is required. Inspect both Actions runs and the profile after publication,
