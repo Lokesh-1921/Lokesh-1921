@@ -6,6 +6,7 @@ import re
 import xml.etree.ElementTree as ET
 
 ROOT=Path(__file__).resolve().parents[1]
+INSTITUTION_PATTERN=re.compile(r'\bvi[t]\b|\bbho[p]al\b|\buniversit[y]\b|\bcolleg[e]\b',re.I)
 
 
 class Images(HTMLParser):
@@ -54,6 +55,20 @@ def main():
     files=list((ROOT/'assets').rglob('*.svg'))
     for file in files:
         validate_svg(file)
+    checked=0
+    for file in ROOT.rglob('*'):
+        if not file.is_file() or any(part in ('.git','__pycache__') for part in file.parts):
+            continue
+        if file.suffix.lower() in ('.svg','.md','.py','.json','.yml','.yaml'):
+            assert not INSTITUTION_PATTERN.search(file.read_text()), f'Institution branding remains in {file.relative_to(ROOT)}'
+            checked+=1
+    for file in (ROOT/'assets').rglob('intro-*.svg'):
+        root=ET.parse(file).getroot()
+        labels=root.findall('.//{http://www.w3.org/2000/svg}text')
+        roles=[node for node in labels if node.get('data-role-title')=='true']
+        assert len(roles)==1, f'Role must have exactly one heading: {file}'
+        for label in labels:
+            assert 'animation' not in label.get('style','') and not label.get('class'), f'Role text must remain immutable: {file}'
     data=json.loads((ROOT/'assets/live/activity.json').read_text())
     assert data['owner']=='Lokesh-1921'
     assert len(data['days'])>=350
@@ -63,7 +78,7 @@ def main():
         desc=root.find('{http://www.w3.org/2000/svg}desc').text
         assert f'contributions / last year: {total}' in desc
         assert f'public repositories: {len(data["repositories"])}' in desc
-    print(f'Validated {len(files)} SVGs, {len(parser.references)} README image references, alt text, local hosting, and dashboard totals.')
+    print(f'Validated {len(files)} SVGs, {len(parser.references)} README image references, immutable role headings, and {checked} files without institution branding.')
 
 
 if __name__=='__main__':

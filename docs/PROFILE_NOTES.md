@@ -1,124 +1,135 @@
-# Profile maintenance and provenance
+# NEURAL // LOKESH — maintenance and provenance
 
-This is the public profile repository for [Lokesh-1921](https://github.com/Lokesh-1921).
-The profile README is the root `README.md` on `main`. No website hosting or GitHub Pages is needed.
+This is the existing public profile repository for [Lokesh-1921](https://github.com/Lokesh-1921).
+The root README is the portfolio. No website hosting, JavaScript application, or Pages setup is required.
 
-## Content verification
+## Identity and verified content
 
-The public profile and all ten public repository listings were inspected on 13 October 2026.
-The original profile was GitHub's starter README and contained no Actions workflows.
-Education, career goals, Python as the primary language, photography, and gaming were supplied by Lokesh.
-Lokesh supplied the LinkedIn URL; its account-view query parameter was removed.
+The current tree uses professional, skill-focused branding only. Academic institution identification
+is excluded from the README, graphics, descriptions, and generation code.
 
-Selected projects were checked against source, not just repository names or README claims:
+Lokesh supplied his Computer Science/AI & ML background, career interests, Python preference,
+photography/gaming interests, and LinkedIn address. The public GitHub account and all ten public
+repository listings were checked again on 13 October 2026.
 
-| Repository | Audited revision | Evidence |
+| Featured repository | Verified source revision | Implementation evidence |
 | --- | --- | --- |
-| `CV-Project-1` | `5736f74a71eefe1b966ddcf0fc01a4688e3e7d93` | `src/features/`, `src/stereo/`, `src/motion/`, `src/evaluation/`, `tests/`, `requirements.txt` |
-| `DigiLocker-For-Hospitals` | `e890d6fab9b7665601ab517e66793e4f85428d3e` | `backend/graph.py`, `backend/rag/`, `backend/models.py`, frontend source and manifests |
-| `trip-planner-ai` | `422bff93e4f96897bc4f62fa59f076bd132fdc57` | `src/lib/planner.ts`, `trip.server.ts`, `trip.functions.ts`, trip components, tests, manifest |
-| `HealthHACK` | `36dd7ab0bd56ce954fbd15b3b717de47fae61b6c` | Repository tree/README plus raw `src/App.tsx`, `package.json`, and accessibility/motion source |
+| CV-Project-1 | 5736f74a71eefe1b966ddcf0fc01a4688e3e7d93 | Feature matching, stereo geometry, optical flow, reconstruction, metrics, CLI, and tests |
+| DigiLocker-For-Hospitals | e890d6fab9b7665601ab517e66793e4f85428d3e | FastAPI, active LangGraph workflow, FAISS/BM25 retrieval, PostgreSQL models, React frontend |
+| trip-planner-ai | 422bff93e4f96897bc4f62fa59f076bd132fdc57 | Deterministic planner, synthetic catalog, assistant integration, typed interfaces, tests |
+| HealthHACK | 36dd7ab0bd56ce954fbd15b3b717de47fae61b6c | React/TypeScript app, typed event content, gallery keyboard controls, reduced-motion hook |
 
-Additional source snapshots inspected: `NoviCord`, `AMDSlinshotHuman`, and
-`AirlinesManagementSystem-24BAI10455`. `Don-t-Press-it` and `oss-audit-24BAI10455`
-were inspected through public repository pages. Java is supported by the airline project's Swing source.
+These revisions are unchanged from the earlier source audit. Other public listings were reviewed;
+the airline project's Java Swing source supports Java in the toolkit. Dependency declarations alone
+were not used to claim proficiency or mastery. Featured application test suites were not executed
+as part of this visual redesign.
 
-The CRM identifies itself as **AI-First CRM HCP**, despite its repository name.
-Its README documents integration limitations; the profile describes a development application.
-The trip planner uses synthetic reference records and simulated selections. It is presented as a prototype,
-not a booking service. Deep learning is a learning direction, rather than a verified implemented stack.
-The NoviCord README's proposed blockchain infrastructure was not used as evidence of implemented skills.
+The CRM's source name is AI-First CRM HCP, despite its repository name. Its runtime/integration
+limitations remain acknowledged. The travel project uses synthetic data and simulated selections.
+The Intelligence Lab describes learning directions, not finished deep-learning products or professional roles.
+No awards, ranks, performance improvements, employment, private project data, or benchmark results are inferred.
 
-No project benchmark values, awards, employment, certifications, or ranks have been inferred.
-The source audit did not execute the featured applications or their test suites.
+## Design and asset generation
 
-## Graphics and accessibility
+The shared palette, typography, layout, diagrams, and motion live in scripts/build_brand.py.
+Hero, role, toolkit, four project cards, lab, footer, and social badges are generated with the Python standard library.
+Each major graphic has wide/compact and dark/light versions. Compact sources are selected up to 900 px,
+including tablets where GitHub's sidebar can narrow the README column. All displayed images are local.
+Brand assets live in assets/brand and project graphics in assets/project-cards. The new brand paths also
+avoid reusing cached images from the previous hero and role implementation.
 
-- `scripts/build_brand.py` regenerates the original banners, animated introduction, stack panels,
-  and social badges using the Python standard library. No font downloads are needed.
-- The SVGs contain no JavaScript, external images, or `foreignObject`.
-- Desktop/mobile and light/dark hero, introduction, stack, and dashboard variants use GitHub-supported
-  `<picture>` sources. Essential information also exists as ordinary Markdown.
-- Project entries use native Markdown blockquote cards so their text wraps on mobile.
-- The introduction cycles over 20 seconds; CSS respects `prefers-reduced-motion`.
-  Its first phrase is the static fallback. Snake animations have a reduced-motion rule and an
-  explicit expandable static calendar in the README.
-- Technology logos are vendored from **Devicon v2.16.0**. Its license is retained in
-  `assets/icons/LICENSE`. LangGraph/FAISS letter marks are original labels, not official logos.
-- The four project schematics are decorative original graphics, not project screenshots.
+The constellation and project schematics are original explanatory artwork, not screenshots,
+deployed dashboards, or representations of measured model internals. Logos are vendored from Devicon v2.16.0;
+its license is retained in assets/icons/LICENSE. LangGraph and FAISS use original schematic marks with text labels.
+The external-link arrows are vector paths, avoiding missing font glyphs.
 
-## Public metrics
+## Role overlap diagnosis and fix
 
-`scripts/update_activity.py` reads public GitHub repository pages and the public contribution calendar.
-It requires no PAT, GraphQL credentials, paid service, or stats-widget host.
-It paginates repositories and checks contribution tooltip counts against GitHub's displayed annual total.
-If the markup changes or a request fails, it raises an error instead of inventing or publishing partial totals.
+The old first-title keyframes set opacity to zero at 24% and back to one at 100%.
+The browser interpolated across that interval while later titles were visible. At seven seconds,
+the first title had opacity 0.174763 while the second had opacity 1: the reported ghosting reproduced.
 
-The committed `assets/live/activity.json` contains only public repository names/languages and calendar counts,
-with a refresh timestamp. The dashboard shows public repositories, last-year contributions, active calendar days,
-and primary-language shares across public non-fork repositories with a detected language.
-Language shares are repository counts, not byte counts, commit counts, or measures of proficiency.
-The date appears in the dashboard. Private repository details are never collected.
+The replacement has exactly one role heading: ASPIRING AI ENGINEER. Its text never animates.
+A separate supporting line stays fixed beneath it. Decorative paths carry the motion.
+The social buttons occupy their own paragraph, with consistent widths and spacing.
+Regression checks reject animated role text or additional role headings.
 
-Streak/rank/trophy/visitor widgets are intentionally omitted: they add service dependencies and do not
-establish engineering experience. Pull-request totals were not independently verified and are not shown.
+The role was sampled at 129 points over 32 seconds in both desktop and mobile versions.
+Its text, bounding box, and opacity stayed identical throughout. Geometry was also checked for all generated
+graphics, including both color themes.
 
-## Automation
+## Motion, static fallbacks, and accessibility
 
-`refresh-profile.yml` runs daily at **04:17 UTC**, can be triggered manually, and runs after changes to
-its generation scripts or workflow on `main`. Committing generated assets cannot trigger another refresh.
-Actions are pinned to verified full commit SHAs. Platane/snk's SVG-only action is pinned to its v3.5.0 source.
+SVG animation uses only lightweight path signals and slow node accents; no script runs in the profile.
+Embedded SVG media queries did not reliably inherit reduced-motion preferences in the test browser.
+The README therefore selects explicit, animation-free hero/role/footer assets using native picture sources.
+It also substitutes the static calendar for the snake when reduced motion is requested.
+This fallback was verified in the browser. The SVG CSS rule remains as an additional direct-view safeguard.
 
-The generation job has `contents: read`, disables persisted checkout credentials, and uses only
-`${{ github.token }}` for the snake's public contribution lookup. The publishing job has `contents: write`
-and commits only `assets/live/` to `main`, without force pushing. No PAT or additional secret is needed.
-Failed refresh steps retain the last successful images and emit explicit warnings in the run summary.
-Asset validation must pass before anything is uploaded or committed.
+The single role heading is readable even if SVG animation support fails completely.
+Essential descriptions, project links, and learning areas are repeated in ordinary Markdown.
+Every displayed image has alt text; generated SVGs have accessible titles and descriptions.
+Project cards link to their actual source repositories. SVG text bounds and spacing are measured in Chromium,
+rather than inferred from character counts.
 
-The initial snakes were generated locally from the same verified calendar snapshot with the pinned
-Platane/snk action. Its GraphQL fetch was replaced only in the local test by an offline adapter containing
-the real public calendar; this validates the official action's runtime and workflow inputs, not live API authentication.
-Future refreshes use the official action with GitHub's built-in token. Both files already exist in
-the repository, so there is no missing output branch or first-run image dependency.
+## Metrics and refresh behavior
 
-`validate-profile.yml` checks local image references, SVG structure/safety, accessibility labels,
-metrics consistency, and the activity parser's failure safeguards on pushes and pull requests.
+scripts/update_activity.py uses public GitHub pages, with no token or stats-service dependency.
+It paginates repository listings and checks calendar tooltip counts against GitHub's displayed annual total.
+Changed markup, incomplete data, and failed requests fail closed instead of publishing partial metrics.
 
-Local checks:
+assets/live/activity.json holds language/fork/profile flags and actual calendar counts, with a timestamp.
+Unneeded repository slugs are omitted, including registration-style identifiers in existing project names.
+The dashboard presents public repository count, last-year contributions, active calendar days, primary project
+languages, and weekly calendar contribution counts. Language shares exclude forks and this profile repository;
+they count repositories by primary language rather than bytes, commits, or proficiency. Zero weeks draw no
+positive bars. No streak, trophy, visitor, rank, or achievement widget is used.
 
-```sh
-python3 scripts/validate_profile.py
-python3 -m unittest discover -s tests -v
+The daily refresh remains at 09:47 IST (04:17 UTC), with manual execution and script/workflow-change triggers.
+Generation has contents: read; the separate publishing job has contents: write and commits only assets/live/.
+No PAT is required. The snake uses the maintained, pinned Platane/snk v3.5.0 SVG-only action with the built-in token.
+Generation failures retain the last good files and emit warnings. Validation must pass before publication.
+Generated commits cannot recursively trigger the refresh workflow.
+
+The Actions were updated to verified Node 24 versions of checkout, upload-artifact, and download-artifact,
+using full commit pins and Ubuntu 24.04. This avoids the deprecated-runtime and moving-runner notices observed
+in the earlier hosted runs.
+
+The new snake palette and inputs were exercised locally with the pinned official action and an offline
+GraphQL adapter populated from the actual collected calendar. This does not claim live API authentication
+or a hosted run of the revised workflow. Initial images are already committed, avoiding first-run broken paths.
+
+## Local maintenance
+
+Use the existing isolated checkout; do not create a Git worktree unless explicitly requested.
+
+~~~sh
 python3 scripts/build_brand.py
 python3 scripts/update_activity.py
-```
+python3 scripts/validate_profile.py
+python3 -m unittest discover -s tests -v
+~~~
 
-The final command accesses public GitHub pages. To reproduce images from the committed snapshot offline:
+The activity command accesses public GitHub pages. For deterministic offline rendering:
 
-```sh
-python3 scripts/update_activity.py --snapshot assets/live/activity.json --output /tmp/profile-activity-check
-```
+~~~sh
+python3 scripts/update_activity.py --snapshot assets/live/activity.json --output /tmp/profile-data-check
+~~~
 
-Use the existing isolated checkout for editing; a Git worktree is unnecessary.
+The profile viewer requires no Python, Node, framework, font service, or package installation.
 
-## Publishing and remaining live checks
+## Review and hosted checks
 
-The changes are prepared locally for review. **Pushing is a separate approval step.**
-After approval, push the prepared commit to the profile repository's `main` branch, then inspect the
-GitHub-rendered profile and the two Actions runs. The initial push includes the workflow/scripts and
-therefore triggers the first refresh automatically. `workflow_dispatch` is available for retries.
+This redesign is prepared as a clean review commit. The previous profile's hosted workflows succeeded;
+the revised README and updated workflow pins require post-publication inspection on GitHub.
+The visual previews use Chromium and GitHub-like Markdown styling, rather than claiming a hosted render
+of an unpublished revision.
 
-GitHub Actions must be enabled. Repository or organization policy must permit the pinned actions
-and the refresh publisher's built-in token to write `main`. If branch protection blocks direct bot commits,
-adapt the publication job to the repository's review policy rather than bypassing protection.
-GitHub may pause schedules in public repositories after 60 days of inactivity; re-enable the schedule if needed.
+The existing automatic publishing job has already demonstrated write access with the built-in token.
+No new secret or account-setting change is required. Inspect both Actions runs and the profile after publication,
+especially picture source selection, linked project cards, and the revised SVGs. Repository policy still applies.
+GitHub may pause schedules after extended inactivity; the manual trigger remains available.
 
-Before pushing, the updated README cannot be validated on the live GitHub profile, and the workflows
-cannot be run in this repository on GitHub. Local browser rendering approximates GitHub's Markdown styling
-and verifies the supplied themes and viewport variants; it does not replace that post-push check.
-
-This cloud environment blocks `api.github.com`, LinkedIn, and the two Vercel demo domains inspected.
-Public GitHub pages, source files, and the local public-data generator were reachable and tested.
-The LinkedIn URL is user-confirmed but its destination could not be live-tested here.
-HealthHACK and NoviCord list Vercel homepages; no demo link was placed in the profile without a successful
-live check. Published raw-image URLs also require the prepared commit to be pushed first.
+All six unique GitHub README destinations returned HTTP 200. The LinkedIn address is confirmed by Lokesh;
+the cloud egress policy prevents checking its response. The verified project homepages on Vercel could not
+be reached here, so unverified demo destinations are omitted. No placeholder is presented as a real contact.

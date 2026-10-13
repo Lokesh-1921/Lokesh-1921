@@ -20,13 +20,13 @@ concurrency:
 jobs:
   generate:
     if: github.repository == 'Lokesh-1921/Lokesh-1921' && github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: read
     steps:
       - name: Check out profile
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.0
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, Node 24
         with:
           persist-credentials: false
 
@@ -43,8 +43,8 @@ jobs:
           github_user_name: Lokesh-1921
           github_token: ${{ github.token }}
           outputs: |
-            assets/live/snake-dark.svg?color_snake=#51e2ed&color_dots=#18253e,#164754,#187080,#20adbb,#53e5ee&color_dot_border=#25334b
-            assets/live/snake-light.svg?color_snake=#7155ca&color_dots=#e7ecf5,#bcdee5,#77bac7,#2b8d9c,#007080&color_dot_border=#d7e1ef
+            assets/live/snake-dark.svg?color_snake=#A78BFA&color_dots=#23314B,#1C3B53,#22647C,#359BB5,#68E6FF&color_dot_border=#23314B
+            assets/live/snake-light.svg?color_snake=#7653C4&color_dots=#E5EDF8,#C3DFE8,#80BECF,#328CA3,#087B92&color_dot_border=#D4DFF0
 
       - name: Add accessible labels and reduced-motion support
         if: steps.snake.outcome == 'success'
@@ -72,7 +72,7 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload verified images and public snapshot
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6, Node 24
         with:
           name: profile-visuals
           path: assets/live/
@@ -81,18 +81,18 @@ jobs:
 
   publish-assets:
     needs: generate
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     permissions:
       contents: write
     steps:
       - name: Check out latest main
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.0
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, Node 24
         with:
           ref: main
 
       - name: Download validated assets
-        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7, Node 24
         with:
           name: profile-visuals
           path: assets/live/
