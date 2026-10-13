@@ -1,0 +1,110 @@
+name: Refresh profile visuals
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/**
+      - .github/workflows/refresh-profile.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: profile-visuals
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    if: github.repository == 'Lokesh-1921/Lokesh-1921' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Check out profile
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.0
+        with:
+          persist-credentials: false
+
+      - name: Refresh real public activity
+        id: activity
+        continue-on-error: true
+        run: python3 scripts/update_activity.py
+
+      - name: Generate light and dark contribution snakes
+        id: snake
+        continue-on-error: true
+        uses: Platane/snk/svg-only@d8f6715049803e982ee5ff501b6b9b7d5deeb09b # v3.5.0
+        with:
+          github_user_name: Lokesh-1921
+          github_token: ${{ github.token }}
+          outputs: |
+            assets/live/snake-dark.svg?color_snake=#51e2ed&color_dots=#18253e,#164754,#187080,#20adbb,#53e5ee&color_dot_border=#25334b
+            assets/live/snake-light.svg?color_snake=#7155ca&color_dots=#e7ecf5,#bcdee5,#77bac7,#2b8d9c,#007080&color_dot_border=#d7e1ef
+
+      - name: Add accessible labels and reduced-motion support
+        if: steps.snake.outcome == 'success'
+        run: python3 scripts/finalize_snake.py
+
+      - name: Validate generated and retained assets
+        run: python3 scripts/validate_profile.py
+
+      - name: Report refresh status
+        env:
+          ACTIVITY_RESULT: ${{ steps.activity.outcome }}
+          SNAKE_RESULT: ${{ steps.snake.outcome }}
+        run: |
+          if [ "$ACTIVITY_RESULT" != success ]; then
+            echo '::warning::Activity refresh failed. The last verified dashboard and static calendar were retained.'
+          fi
+          if [ "$SNAKE_RESULT" != success ]; then
+            echo '::warning::Snake refresh failed. The previously generated animations were retained.'
+          fi
+          {
+            echo '### Profile visual refresh'
+            echo "Public activity: $ACTIVITY_RESULT"
+            echo "Contribution snake: $SNAKE_RESULT"
+            echo 'Only validated assets are published. Failed updates retain the last good images.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload verified images and public snapshot
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: profile-visuals
+          path: assets/live/
+          if-no-files-found: error
+          retention-days: 1
+
+  publish-assets:
+    needs: generate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Check out latest main
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.0
+        with:
+          ref: main
+
+      - name: Download validated assets
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          name: profile-visuals
+          path: assets/live/
+
+      - name: Commit changed generated assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- assets/live/
+          if git diff --cached --quiet; then
+            echo 'No generated assets changed.'
+            exit 0
+          fi
+          git commit -m 'chore(profile): refresh verified activity visuals'
+          git push origin HEAD:main

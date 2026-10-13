@@ -1,0 +1,22 @@
+name: Validate profile
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.3.0
+        with:
+          persist-credentials: false
+      - name: Check SVGs, README references, and metrics
+        run: python3 scripts/validate_profile.py
+      - name: Test activity parsing and failure safeguards
+        run: python3 -m unittest discover -s tests -v
