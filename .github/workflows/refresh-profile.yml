@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - scripts/**
+      - content/**
       - .github/workflows/refresh-profile.yml
 
 permissions:
@@ -43,8 +44,8 @@ jobs:
           github_user_name: Lokesh-1921
           github_token: ${{ github.token }}
           outputs: |
-            assets/live/snake-dark.svg?color_snake=#A78BFA&color_dots=#23314B,#1C3B53,#22647C,#359BB5,#68E6FF&color_dot_border=#23314B
-            assets/live/snake-light.svg?color_snake=#7653C4&color_dots=#E5EDF8,#C3DFE8,#80BECF,#328CA3,#087B92&color_dot_border=#D4DFF0
+            assets/generated/contribution-snake-dark.svg?color_snake=#A78BFA&color_dots=#23314B,#1C3B53,#22647C,#359BB5,#68E6FF&color_dot_border=#23314B
+            assets/generated/contribution-snake-light.svg?color_snake=#7653C4&color_dots=#E5EDF8,#C3DFE8,#80BECF,#328CA3,#087B92&color_dot_border=#D4DFF0
 
       - name: Add accessible labels and reduced-motion support
         if: steps.snake.outcome == 'success'
@@ -75,7 +76,7 @@ jobs:
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6, Node 24
         with:
           name: profile-visuals
-          path: assets/live/
+          path: assets/generated/
           if-no-files-found: error
           retention-days: 1
 
@@ -95,13 +96,13 @@ jobs:
         uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7, Node 24
         with:
           name: profile-visuals
-          path: assets/live/
+          path: assets/generated/
 
       - name: Commit changed generated assets
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- assets/live/
+          git add -- assets/generated/
           if git diff --cached --quiet; then
             echo 'No generated assets changed.'
             exit 0

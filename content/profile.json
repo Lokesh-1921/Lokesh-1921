@@ -1,0 +1,60 @@
+{
+  "owner": "Lokesh-1921",
+  "identity": "HUMAN // LOKESH",
+  "name": "LOKESH",
+  "role": "ASPIRING AI ENGINEER",
+  "tagline": "Turning curiosity into intelligent systems.",
+  "focus": ["AI Engineering", "Machine Learning", "Generative AI"],
+  "support": "Python · Machine Learning · Generative AI",
+  "links": {
+    "linkedin": "https://www.linkedin.com/in/lokesh-ks/",
+    "github": "https://github.com/Lokesh-1921?tab=repositories"
+  },
+  "about": [
+    "I'm **Lokesh**, a Computer Science student specializing in **AI & ML**. Python is at the center of my work, and I'm learning to build intelligent systems that turn ideas into useful software.",
+    "My public projects explore document retrieval, AI-assisted healthcare workflows, and thoughtful application interfaces. I'm developing my machine learning foundations while exploring **generative AI** and **agentic systems**."
+  ],
+  "offscreen": "Away from the keyboard: photography, gaming, and noticing how things work.",
+  "sections": [
+    {"key": "about", "title": "THE ENGINEER BEHIND THE CODE", "mobile": ["THE ENGINEER", "BEHIND THE CODE"]},
+    {"key": "systems", "title": "TECHNICAL SYSTEMS", "mobile": ["TECHNICAL SYSTEMS"]},
+    {"key": "builds", "title": "FEATURED BUILDS", "mobile": ["FEATURED BUILDS"]},
+    {"key": "dashboard", "title": "GITHUB INTELLIGENCE DASHBOARD", "mobile": ["GITHUB INTELLIGENCE", "DASHBOARD"]},
+    {"key": "exploring", "title": "CURRENTLY EXPLORING", "mobile": ["CURRENTLY EXPLORING"]},
+    {"key": "closing", "title": "CLOSING SIGNATURE", "mobile": ["CLOSING SIGNATURE"]}
+  ],
+  "projects": [
+    {
+      "key": "crm", "repo": "DigiLocker-For-Hospitals", "title": "AI-FIRST CRM", "display_name": "AI-First CRM",
+      "subtitle": "Healthcare workflows & document context", "mobile_subtitle": ["Healthcare workflows", "& document context"],
+      "status": "DEVELOPMENT APP", "lines": ["Record HCP interactions.", "Retrieve context from local PDFs."],
+      "tags": ["FastAPI", "LangGraph", "FAISS", "React"],
+      "description": "A React/FastAPI CRM with LangGraph intent routing, FAISS + BM25 hybrid retrieval, and model-based reranking over local PDFs. Includes PostgreSQL persistence, Redis caching, and dashboard updates. Its repository documents development and integration limitations.",
+      "revision": "e890d6fab9b7665601ab517e66793e4f85428d3e"
+    },
+    {
+      "key": "trip", "repo": "trip-planner-ai", "title": "TRIP PLANNER AI", "display_name": "Trip Planner AI",
+      "subtitle": "Constraints before recommendations", "mobile_subtitle": ["Constraints before", "recommendations"],
+      "status": "SYNTHETIC PROTOTYPE", "lines": ["Compare short trips within", "explicit budgets. Synthetic data."],
+      "tags": ["TypeScript", "React", "TanStack", "Vitest"],
+      "description": "A synthetic travel-planning prototype with editable trip details, deterministic filtering/ranking, and transparent flight/hotel cost breakdowns. Includes assistant integration code and tests; AI availability depends on backend configuration. Selections are simulations.",
+      "revision": "422bff93e4f96897bc4f62fa59f076bd132fdc57"
+    },
+    {
+      "key": "health", "repo": "HealthHACK", "title": "HEALTHHACK", "display_name": "HealthHACK",
+      "subtitle": "Health Hackathon 3.0", "mobile_subtitle": ["Health Hackathon 3.0"],
+      "status": "EVENT WEBSITE", "lines": ["A responsive healthcare-event", "experience built for clarity."],
+      "tags": ["TypeScript", "React", "Vite", "Tailwind"],
+      "description": "A responsive healthcare-event website with typed content modules, a keyboard-accessible gallery lightbox, an event timeline, and reduced-motion support.",
+      "revision": "36dd7ab0bd56ce954fbd15b3b717de47fae61b6c"
+    },
+    {
+      "key": "vision", "repo": "CV-Project-1", "title": "STEREOVISION", "display_name": "StereoVision · 3D & Motion Analysis",
+      "subtitle": "3D & motion / secondary exploration", "mobile_subtitle": ["3D & motion analysis", "Secondary exploration"],
+      "status": "ACADEMIC PROJECT", "lines": ["From stereo images to depth,", "3D geometry, and motion."],
+      "tags": ["Python", "OpenCV", "NumPy", "pytest"],
+      "description": "A Python CLI suite for stereo disparity, colored .ply point clouds, Harris/SIFT/ORB matching with RANSAC, and Farnebäck/Lucas–Kanade optical flow. Includes synthetic datasets, evaluation metrics, and unit/integration tests. Computer vision is a secondary exploration.",
+      "revision": "5736f74a71eefe1b966ddcf0fc01a4688e3e7d93"
+    }
+  ]
+}

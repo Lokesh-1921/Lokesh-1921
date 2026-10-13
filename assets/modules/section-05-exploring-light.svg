@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="104" viewBox="0 0 1200 104" role="img" aria-labelledby="title desc"><title id="title">05 / CURRENTLY EXPLORING</title><desc id="desc">An animated section signal with stationary, accessible typography.</desc><g font-family="Arial, Helvetica, sans-serif"><defs>
+<linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F5F8FF"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+<linearGradient id="spectrum"><stop stop-color="#087B92"/><stop offset="1" stop-color="#7653C4"/></linearGradient>
+<radialGradient id="atmosphere"><stop stop-color="#7653C4" stop-opacity=".22"/><stop offset="1" stop-color="#7653C4" stop-opacity="0"/></radialGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#D4DFF0" stroke-width=".6"/></pattern>
+<clipPath id="panel-clip"><rect x="1" y="1" width="1198" height="102" rx="22"/></clipPath>
+</defs><rect x="1" y="1" width="1198" height="102" rx="22" fill="url(#surface)" stroke="#D4DFF0" /><path d="M28 1H1172" fill="none" stroke="url(#spectrum)" stroke-width="2" stroke-opacity=".55"/><style>
+@keyframes flow{to{stroke-dashoffset:-240}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes orbitBack{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:.7}}
+@keyframes halo{0%,100%{transform:scale(.95);opacity:.2}50%{transform:scale(1.08);opacity:.55}}
+@keyframes scan{0%{transform:translateX(0);opacity:0}10%,85%{opacity:.3}100%{transform:translateX(1120px);opacity:0}}
+.flow{animation:flow 14s linear infinite}
+.orbit{animation:orbit 32s linear infinite;transform-origin:0px 0px}
+.orbit-back{animation:orbitBack 44s linear infinite;transform-origin:0px 0px}
+.pulse{animation:pulse 10s ease-in-out infinite}
+.halo{animation:halo 12s ease-in-out infinite;transform-origin:0px 0px}
+.scan{animation:scan 20s linear infinite}
+@media(prefers-reduced-motion:reduce){.flow,.orbit,.orbit-back,.pulse,.halo,.scan{animation:none!important}}
+</style><rect x="24" y="25" width="62" height="50" rx="12" fill="#087B92" stroke="none" fill-opacity=".07"/><text x="55" y="59" fill="#087B92" font-size="25" font-weight="600" text-anchor="middle">05</text><text x="116" y="62" fill="#16243F" font-size="32" font-weight="600" letter-spacing=".3" data-section-title="true">CURRENTLY EXPLORING</text><path d="M24 92H1176" fill="none" stroke="#D4DFF0" stroke-width="1.5"/><path d="M24 92H1176" fill="none" stroke="#087B92" stroke-width="2" stroke-dasharray="28 212" class="flow" style="animation-delay:-10s" opacity=".65"/><circle cx="1140" cy="49" r="4" fill="#087B92" class="pulse" opacity=".5"/><circle cx="1160" cy="49" r="3" fill="#7653C4" /></g></svg>

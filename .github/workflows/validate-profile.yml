@@ -16,6 +16,12 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6, Node 24
         with:
           persist-credentials: false
+      - name: Verify reproducible modules and README
+        run: |
+          python3 scripts/build_brand.py
+          python3 scripts/build_readme.py
+          git diff --exit-code -- README.md assets/hero/ assets/modules/ assets/dashboards/ assets/projects/
+          test -z "$(git ls-files --others --exclude-standard -- README.md assets/hero/ assets/modules/ assets/dashboards/ assets/projects/)"
       - name: Check SVGs, README references, and metrics
         run: python3 scripts/validate_profile.py
       - name: Test activity parsing and failure safeguards

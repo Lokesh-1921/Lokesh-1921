@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350" role="img" aria-labelledby="title desc"><title id="title">Curiosity drives the code. Impact shapes the system.</title><desc id="desc">HUMAN // LOKESH. An invitation to build something useful.</desc><g font-family="Arial, Helvetica, sans-serif"><defs>
+<linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#F5F8FF"/><stop offset="1" stop-color="#FFFFFF"/></linearGradient>
+<linearGradient id="spectrum"><stop stop-color="#087B92"/><stop offset="1" stop-color="#7653C4"/></linearGradient>
+<radialGradient id="atmosphere"><stop stop-color="#7653C4" stop-opacity=".22"/><stop offset="1" stop-color="#7653C4" stop-opacity="0"/></radialGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#D4DFF0" stroke-width=".6"/></pattern>
+<clipPath id="panel-clip"><rect x="1" y="1" width="598" height="348" rx="22"/></clipPath>
+</defs><rect x="1" y="1" width="598" height="348" rx="22" fill="url(#surface)" stroke="#D4DFF0" /><rect x="1" y="1" width="598" height="348" rx="22" fill="url(#grid)" stroke="none" opacity=".32"/><path d="M28 1H572" fill="none" stroke="url(#spectrum)" stroke-width="2" stroke-opacity=".55"/><style>
+@keyframes flow{to{stroke-dashoffset:-240}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes orbitBack{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:.7}}
+@keyframes halo{0%,100%{transform:scale(.95);opacity:.2}50%{transform:scale(1.08);opacity:.55}}
+@keyframes scan{0%{transform:translateX(0);opacity:0}10%,85%{opacity:.3}100%{transform:translateX(520px);opacity:0}}
+.flow{animation:flow 14s linear infinite}
+.orbit{animation:orbit 32s linear infinite;transform-origin:0px 0px}
+.orbit-back{animation:orbitBack 44s linear infinite;transform-origin:0px 0px}
+.pulse{animation:pulse 10s ease-in-out infinite}
+.halo{animation:halo 12s ease-in-out infinite;transform-origin:0px 0px}
+.scan{animation:scan 20s linear infinite}
+@media(prefers-reduced-motion:reduce){.flow,.orbit,.orbit-back,.pulse,.halo,.scan{animation:none!important}}
+</style><text x="32" y="49" fill="#087B92" font-size="22" font-weight="600" letter-spacing="2">HUMAN // LOKESH</text><text x="32" y="127" fill="#16243F" font-size="38" font-weight="600" letter-spacing="-1">Curiosity drives the code.</text><text x="32" y="187" fill="#16243F" font-size="38" font-weight="600" letter-spacing="-1">Impact shapes the system.</text><path d="M32 235H568" fill="none" stroke="#D4DFF0" stroke-width="1.5"/><path d="M32 235H568" fill="none" stroke="#087B92" stroke-width="2" stroke-dasharray="28 212" class="flow" style="animation-delay:-8s" opacity=".65"/><text x="32" y="290" fill="#51627D" font-size="22" font-weight="500" letter-spacing="1">LET&#x27;S BUILD SOMETHING USEFUL.</text><text x="32" y="322" fill="#51627D" font-size="19" font-weight="500" >PYTHON / AI / PURPOSEFUL SOFTWARE</text></g></svg>

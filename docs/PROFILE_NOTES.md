@@ -1,140 +1,109 @@
-# HUMAN // LOKESH — maintenance and provenance
+# HUMAN // LOKESH — modular profile maintenance
 
 This is the existing public profile repository for [Lokesh-1921](https://github.com/Lokesh-1921).
-The root README is the portfolio. No website hosting, JavaScript application, or Pages setup is required.
+The root README is the portfolio. No separate website, Pages configuration, or application deployment is needed.
 
-## Identity and verified content
+## Content and provenance
 
-The current tree uses professional, skill-focused branding only. Academic institution identification
-is excluded from the README, graphics, descriptions, and generation code.
+content/profile.json is the source for identity, confirmed contact destinations, section order, project
+descriptions, and audited source revisions. Lokesh supplied his Computer Science/AI & ML background,
+Python preference, learning interests, photography/gaming interests, and LinkedIn URL.
+Institution identification is absent from current source and graphics.
 
-The front-facing identity is HUMAN // LOKESH: AI engineering, machine learning, and generative AI.
-The role is ASPIRING AI ENGINEER, supported by Python · Machine Learning · Generative AI.
-Computer vision is retained as a secondary exploration and as verified project evidence, not a primary identity.
+The primary identity is HUMAN // LOKESH: aspiring AI engineer, Python, machine learning, and generative AI.
+Computer vision is deliberately secondary: the fourth featured project and a side exploration in the lab.
+No employment, expertise level, award, production status, live demo, or performance result is invented.
 
-Lokesh supplied his Computer Science/AI & ML background, career interests, Python preference,
-photography/gaming interests, and LinkedIn address. The public GitHub account and all ten public
-repository listings were checked again on 13 October 2026.
+All four featured public source revisions were rechecked on 13 October 2026 and remain unchanged:
+the healthcare CRM has implemented routing/retrieval and documented integration gaps; the trip planner
+uses synthetic data and simulated selections; HealthHACK implements event interfaces and accessibility;
+StereoVision supplies geometry, optical-flow tools, evaluation code, and tests. Featured application
+test suites were not rerun as part of this visual redesign.
 
-| Featured repository | Verified source revision | Implementation evidence |
-| --- | --- | --- |
-| CV-Project-1 | 5736f74a71eefe1b966ddcf0fc01a4688e3e7d93 | Feature matching, stereo geometry, optical flow, reconstruction, metrics, CLI, and tests |
-| DigiLocker-For-Hospitals | e890d6fab9b7665601ab517e66793e4f85428d3e | FastAPI, active LangGraph workflow, FAISS/BM25 retrieval, PostgreSQL models, React frontend |
-| trip-planner-ai | 422bff93e4f96897bc4f62fa59f076bd132fdc57 | Deterministic planner, synthetic catalog, assistant integration, typed interfaces, tests |
-| HealthHACK | 36dd7ab0bd56ce954fbd15b3b717de47fae61b6c | React/TypeScript app, typed event content, gallery keyboard controls, reduced-motion hook |
+## Modular architecture
 
-These revisions are unchanged from the earlier source audit. Other public listings were reviewed;
-the airline project's Java Swing source supports Java in the toolkit. Dependency declarations alone
-were not used to claim proficiency or mastery. Featured application test suites were not executed
-as part of this visual redesign.
+- content/profile.json: human-editable, verified content.
+- scripts/profile_design/shared.py: palettes, local logos, geometry, motion, and static variants.
+- scripts/profile_design/hero.py: orbit illustration and opening/closing composition.
+- scripts/profile_design/panels.py: role, six section headers, technical systems, learning lab, and connection buttons.
+- scripts/profile_design/projects.py: uniform source-linked project cards and conceptual diagrams.
+- scripts/profile_design/dashboard.py: actual metrics, honest language shares, and weekly activity.
+- scripts/build_brand.py: deterministic SVG assembly.
+- scripts/build_readme.py: deterministic Markdown/HTML composition.
+- scripts/update_activity.py: public-data collection and atomic rendering.
+- scripts/finalize_snake.py: accessible labels and motion preference guard for the maintained action output.
+- scripts/validate_profile.py: references, XML safety, content consistency, positioning, and metric safeguards.
 
-The CRM's source name is AI-First CRM HCP, despite its repository name. Its runtime/integration
-limitations remain acknowledged. The travel project uses synthetic data and simulated selections.
-The Intelligence Lab describes learning directions, not finished deep-learning products or professional roles.
-No awards, ranks, performance improvements, employment, private project data, or benchmark results are inferred.
+The old generated directories were replaced only after their content, metadata, and initial snake assets
+were preserved in the new modules. Unrelated projects and account settings were not modified.
 
-## Design and asset generation
+## Motion and rendering
 
-The shared palette, typography, layout, diagrams, and motion live in scripts/build_brand.py.
-Hero, role, toolkit, four project cards, lab, footer, and social badges are generated with the Python standard library.
-Each major graphic has wide/compact and dark/light versions. Compact sources are selected up to 900 px,
-including tablets where GitHub's sidebar can narrow the README column. All displayed images are local.
-Brand assets live in assets/brand and project graphics in assets/project-cards. The new brand paths also
-avoid reusing cached images from the previous hero and role implementation.
+Only geometry animates. The role has exactly one immutable heading and a fixed supporting line.
+Focus outlines pulse independently of their labels. Hero rings orbit, particles travel, and signal dashes flow.
+Section headers, technical-system accents, project schematics, learning panels, and the closing signature move
+at deliberately slow rates. Metric values and chart bars never animate or imply live measurements.
 
-The constellation and project schematics are original explanatory artwork, not screenshots,
-deployed dashboards, or representations of measured model internals. Logos are vendored from Devicon v2.16.0;
-its license is retained in assets/icons/LICENSE. LangGraph and FAISS use original schematic marks with text labels.
-The external-link arrows are vector paths, avoiding missing font glyphs.
+The original ghosting came from interpolating the first title's opacity back to one while another title
+was visible. That multi-title implementation stays removed. New role typography, opacity, and bounds are
+sampled across 258 frames in wide/compact layouts.
 
-## Role overlap diagnosis and fix
+Each animated module has explicit static variants. Reduced-motion picture sources select those images and
+the static contribution calendar. Embedded SVG media queries alone were not reliable in earlier testing;
+the explicit files are the main fallback. Important information is also present in ordinary Markdown and alt text.
 
-The old first-title keyframes set opacity to zero at 24% and back to one at 100%.
-The browser interpolated across that interval while later titles were visible. At seven seconds,
-the first title had opacity 0.174763 while the second had opacity 1: the reported ghosting reproduced.
+Compact variants are selected at viewport widths up to 900 px to accommodate GitHub's narrow profile column.
+The picture, heading, paragraph, link, and details tags are ordinary GitHub-compatible HTML. No README CSS,
+script, embedded HTML in SVGs, remote font, image widget, or simulated interaction is required.
 
-The replacement has exactly one role heading: ASPIRING AI ENGINEER. Its text never animates.
-A separate supporting line stays fixed beneath it. Decorative paths carry the motion.
-The social buttons occupy their own paragraph, with consistent widths and spacing.
-Regression checks reject animated role text or additional role headings.
+## Honest data and secure automation
 
-The role was sampled at 129 points over 32 seconds in both desktop and mobile versions.
-Its text, bounding box, and opacity stayed identical throughout. Geometry was also checked for all generated
-graphics, including both color themes.
+The existing daily refresh remains at **09:47 IST** (04:17 UTC), with manual and relevant source-change triggers.
+The public-page collector paginates repository listings and requires calendar counts to match GitHub's
+displayed annual total. Changed markup and partial data fail closed, retaining the last verified images.
 
-## Motion, static fallbacks, and accessibility
+The snapshot stores language/fork/profile flags and actual daily counts. Unneeded repository identifiers
+are excluded. Primary language shares count non-fork project repositories, excluding the profile; they
+are not byte shares, commit shares, or measures of mastery. Empty weeks produce no positive activity bars.
+No rank, streak estimate, trophy, visitor count, or achievement widget is used.
 
-SVG animation uses only lightweight path signals and slow node accents; no script runs in the profile.
-Embedded SVG media queries did not reliably inherit reduced-motion preferences in the test browser.
-The README therefore selects explicit, animation-free hero/role/footer assets using native picture sources.
-It also substitutes the static calendar for the snake when reduced motion is requested.
-This fallback was verified in the browser. The SVG CSS rule remains as an additional direct-view safeguard.
+The generation job has contents: read and no persisted checkout credential. The separate publishing job
+has contents: write and stages only assets/generated/. All actions retain their verified full commit pins,
+Node 24 runtime versions, and Ubuntu 24.04 runners. The built-in token is sufficient; no PAT or new secret is needed.
+Refresh failures emit warnings. Validated initial assets are committed, preventing first-run broken paths.
+Generated changes cannot recursively trigger the refresh workflow.
 
-The single role heading is readable even if SVG animation support fails completely.
-Essential descriptions, project links, and learning areas are repeated in ordinary Markdown.
-Every displayed image has alt text; generated SVGs have accessible titles and descriptions.
-Project cards link to their actual source repositories. SVG text bounds and spacing are measured in Chromium,
-rather than inferred from character counts.
-
-## Metrics and refresh behavior
-
-scripts/update_activity.py uses public GitHub pages, with no token or stats-service dependency.
-It paginates repository listings and checks calendar tooltip counts against GitHub's displayed annual total.
-Changed markup, incomplete data, and failed requests fail closed instead of publishing partial metrics.
-
-assets/live/activity.json holds language/fork/profile flags and actual calendar counts, with a timestamp.
-Unneeded repository slugs are omitted, including registration-style identifiers in existing project names.
-The dashboard presents public repository count, last-year contributions, active calendar days, primary project
-languages, and weekly calendar contribution counts. Language shares exclude forks and this profile repository;
-they count repositories by primary language rather than bytes, commits, or proficiency. Zero weeks draw no
-positive bars. No streak, trophy, visitor, rank, or achievement widget is used.
-
-The daily refresh remains at 09:47 IST (04:17 UTC), with manual execution and script/workflow-change triggers.
-Generation has contents: read; the separate publishing job has contents: write and commits only assets/live/.
-No PAT is required. The snake uses the maintained, pinned Platane/snk v3.5.0 SVG-only action with the built-in token.
-Generation failures retain the last good files and emit warnings. Validation must pass before publication.
-Generated commits cannot recursively trigger the refresh workflow.
-
-The Actions were updated to verified Node 24 versions of checkout, upload-artifact, and download-artifact,
-using full commit pins and Ubuntu 24.04. This avoids the deprecated-runtime and moving-runner notices observed
-in the earlier hosted runs.
-
-The snake palette and inputs were exercised locally with the pinned official action and an offline
-GraphQL adapter populated from the actual collected calendar. The subsequent hosted refresh also succeeded
-with these pins and inputs. Initial images are committed, avoiding first-run broken paths.
+The read-only validation workflow rebuilds the brand and README and checks for drift before validation/tests.
+Keeping the existing two workflows avoids redundant schedules, repeated contribution fetching, and extra publishing jobs.
 
 ## Local maintenance
 
-Use the existing isolated checkout; do not create a Git worktree unless explicitly requested.
-
 ~~~sh
 python3 scripts/build_brand.py
+python3 scripts/build_readme.py
 python3 scripts/update_activity.py
 python3 scripts/validate_profile.py
 python3 -m unittest discover -s tests -v
 ~~~
 
-The activity command accesses public GitHub pages. For deterministic offline rendering:
+To preserve the existing verified snapshot while regenerating its new design:
 
 ~~~sh
-python3 scripts/update_activity.py --snapshot assets/live/activity.json --output /tmp/profile-data-check
+python3 scripts/update_activity.py --snapshot assets/generated/activity.json
 ~~~
 
-The profile viewer requires no Python, Node, framework, font service, or package installation.
+The generators use the Python standard library. Chromium, Playwright, Markdown-it, and actionlint were
+used only for authoring/QA and are not dependencies of the rendered profile or automated generation.
 
-## Review and hosted checks
+## Review and publication
 
-This HUMAN branding refinement is prepared for review and has not been published. The existing workflow
-versions succeeded in hosted validation run 38437560270 and refresh run 38437560254. Their permissions,
-schedule, and pins are unchanged by this content revision. The new README requires post-publication inspection
-on GitHub. Its previews use Chromium and GitHub-like Markdown styling, rather than claiming a hosted render
-of the unpublished revision.
+This modular revision is prepared for review and is not published yet. The previous hosted validation
+and refresh runs succeeded, proving the existing permissions/token arrangement. New directory paths and
+the regenerated README still require native GitHub inspection and a hosted run after publication.
 
-The existing automatic publishing job has already demonstrated write access with the built-in token.
-No new secret or account-setting change is required. Inspect both Actions runs and the profile after publication,
-especially picture source selection, linked project cards, and the revised SVGs. Repository policy still applies.
-GitHub may pause schedules after extended inactivity; the manual trigger remains available.
+No new account setting or secret setup is required. Check GitHub's picture selection, six image headings,
+linked project modules, and both workflows after publishing. Extended repository inactivity may pause
+scheduled workflows; the manual trigger remains available.
 
-All six unique GitHub README destinations returned HTTP 200. The LinkedIn address is confirmed by Lokesh;
-the cloud egress policy prevents checking its response. The verified project homepages on Vercel could not
-be reached here, so unverified demo destinations are omitted. No placeholder is presented as a real contact.
+Public repository destinations were rechecked. LinkedIn is the URL supplied by Lokesh; live response checks
+are blocked by this cloud network policy. Unverified demo links are omitted.

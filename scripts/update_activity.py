@@ -3,7 +3,6 @@
 Fail closed if GitHub changes its markup; the workflow retains the last good assets.
 """
 import argparse
-from collections import Counter
 from datetime import datetime, timezone
 from html import escape
 from html.parser import HTMLParser
@@ -13,7 +12,8 @@ import re
 from urllib.parse import urljoin, urlsplit
 from urllib.request import Request, urlopen
 
-from build_brand import PALETTES, text, surface
+from profile_design.shared import PALETTES, text, surface, static_body
+from profile_design.dashboard import dashboard, project_languages
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -135,63 +135,6 @@ def svg(width, height, content, title, description):
     return f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="title desc"><title id="title">{escape(title)}</title><desc id="desc">{escape(description)}</desc><g font-family="Arial, Helvetica, sans-serif">{content}</g></svg>\n'
 
 
-def project_languages(data):
-    return Counter(repo['language'] for repo in data['repositories']
-                   if not repo['fork'] and repo['language']
-                   and not repo.get('is_profile',repo.get('name','').lower()==data['owner'].lower()))
-
-
-def dashboard(data, theme, mobile=False):
-    p=PALETTES[theme]
-    width,height=(600,842) if mobile else (1200,566)
-    days=data['days']
-    values=[('PUBLIC REPOSITORIES',len(data['repositories'])),
-            ('CONTRIBUTIONS / LAST YEAR',sum(d['count'] for d in days)),
-            ('ACTIVE CALENDAR DAYS',sum(d['count']>0 for d in days))]
-    languages=project_languages(data)
-    total=sum(languages.values())
-    content=surface(p,width,height)
-    content+=text(28,43,'ENGINEERING SIGNAL / GITHUB',22,p['cyan'],600,'letter-spacing="1.3"')
-    labels=[['PUBLIC','REPOSITORIES'],['CONTRIBUTIONS','LAST YEAR'],['ACTIVE DAYS','IN THE CALENDAR']]
-    for i,(_,value) in enumerate(values):
-        x,y=(28,76+i*134) if mobile else (28+i*390,79)
-        tw,th=(544,114) if mobile else (364,174)
-        content+=f'<rect x="{x}" y="{y}" width="{tw}" height="{th}" rx="14" fill="{p["panel"]}" stroke="{p["border"]}"/>'
-        content+=text(x+21,y+76 if mobile else y+84,f'{value:,}',66,p['text'],600)
-        for j,label in enumerate(labels[i]):
-            content+=text(x+147 if mobile else x+21,y+48+j*30 if mobile else y+122+j*26,label,23 if mobile else 20,p['muted'],500)
-    y=500 if mobile else 301
-    content+=text(28,y,'PRIMARY PROJECT LANGUAGES',22,p['muted'],600,'letter-spacing="1"')
-    x=28
-    colors=[p['cyan'],p['violet'],'#49AFC4','#7D6BAD','#7FA3B8','#557A91']
-    for i,(language,count) in enumerate(languages.most_common()):
-        segment=(width-56)*count/total if total else 0
-        content+=f'<rect x="{x:.2f}" y="{y+24}" width="{segment:.2f}" height="14" fill="{colors[i%len(colors)]}"/>'
-        x+=segment
-        lx=28+(i%2)*280 if mobile else 28+(i%5)*230
-        ly=y+75+(i//2)*36 if mobile else y+84+(i//5)*30
-        content+=f'<circle cx="{lx+5}" cy="{ly-7}" r="5" fill="{colors[i%len(colors)]}"/>'
-        content+=text(lx+19,ly,f'{language} · {count}/{total}',22,p['text'])
-    chart_y=704 if mobile else 446
-    content+=text(28,chart_y,'WEEKLY CONTRIBUTIONS',20,p['muted'],500,'letter-spacing="1"')
-    weekly=Counter()
-    for day in days:
-        weekly[day.get('x',0)]+=day['count']
-    n=max(weekly,default=0)+1
-    maximum=max(weekly.values(),default=0)
-    step=(width-56)/n
-    floor=chart_y+65
-    content+=f'<path d="M28 {floor}H{width-28}" stroke="{p["border"]}"/>'
-    for week,count in sorted(weekly.items()):
-        bar_height=48*count/maximum if maximum else 0
-        if count:
-            content+=f'<rect x="{28+week*step:.2f}" y="{floor-bar_height:.2f}" width="{max(1,step-4):.2f}" height="{bar_height:.2f}" rx="2" fill="{p["cyan"]}" fill-opacity=".65"><title>Calendar week {week+1}: {count} contributions</title></rect>'
-    date=data['updated_at'][:10]
-    content+=text(28,height-25,f'SNAPSHOT / {date} UTC',22 if mobile else 18,p['muted'])
-    description='; '.join(f'{label.lower()}: {value}' for label,value in values)
-    description+='. Primary languages count non-fork project repositories and exclude this profile. Weekly bars show actual calendar contribution counts. Updated '+date+'.'
-    return svg(width,height,content,'HUMAN / GitHub engineering signal',description)
-
 
 def calendar_svg(data,theme,mobile=False):
     p=PALETTES[theme]
@@ -220,10 +163,12 @@ def render(data,out):
     out.mkdir(parents=True,exist_ok=True)
     files={}
     for theme in PALETTES:
-        files[f'dashboard-{theme}.svg']=dashboard(data,theme)
-        files[f'dashboard-mobile-{theme}.svg']=dashboard(data,theme,True)
-        files[f'contributions-{theme}.svg']=calendar_svg(data,theme)
-        files[f'contributions-mobile-{theme}.svg']=calendar_svg(data,theme,True)
+        for compact in (False,True):
+            suffix='-mobile' if compact else ''
+            body=dashboard(data,theme,compact)
+            files[f'stats-summary{suffix}-{theme}.svg']=body
+            files[f'stats-summary{suffix}-static-{theme}.svg']=static_body(body)
+            files[f'activity-calendar{suffix}-{theme}.svg']=calendar_svg(data,theme,compact)
     files['activity.json']=json.dumps(data,indent=2,ensure_ascii=False)+'\n'
     # Render everything before replacing a previously successful snapshot.
     for name,body in files.items():
@@ -233,7 +178,7 @@ def render(data,out):
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--owner',default='Lokesh-1921')
-    parser.add_argument('--output',type=Path,default=ROOT/'assets/live')
+    parser.add_argument('--output',type=Path,default=ROOT/'assets/generated')
     parser.add_argument('--snapshot',type=Path,help='Render an existing verified public-data snapshot without network access')
     args=parser.parse_args()
     if not re.fullmatch(r'[A-Za-z0-9-]{1,39}',args.owner):

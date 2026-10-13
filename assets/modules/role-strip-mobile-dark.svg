@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="212" viewBox="0 0 600 212" role="img" aria-labelledby="title desc"><title id="title">Aspiring AI Engineer</title><desc id="desc">Python, machine learning, generative AI. One immutable role heading; only decorative geometry animates.</desc><g font-family="Arial, Helvetica, sans-serif"><defs>
+<linearGradient id="surface" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#070B17"/><stop offset="1" stop-color="#0D1426"/></linearGradient>
+<linearGradient id="spectrum"><stop stop-color="#68E6FF"/><stop offset="1" stop-color="#A78BFA"/></linearGradient>
+<radialGradient id="atmosphere"><stop stop-color="#A78BFA" stop-opacity=".22"/><stop offset="1" stop-color="#A78BFA" stop-opacity="0"/></radialGradient>
+<pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#23314B" stroke-width=".6"/></pattern>
+<clipPath id="panel-clip"><rect x="1" y="1" width="598" height="210" rx="22"/></clipPath>
+</defs><rect x="1" y="1" width="598" height="210" rx="22" fill="url(#surface)" stroke="#23314B" /><path d="M28 1H572" fill="none" stroke="url(#spectrum)" stroke-width="2" stroke-opacity=".55"/><style>
+@keyframes flow{to{stroke-dashoffset:-240}}
+@keyframes orbit{to{transform:rotate(360deg)}}
+@keyframes orbitBack{to{transform:rotate(-360deg)}}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:.7}}
+@keyframes halo{0%,100%{transform:scale(.95);opacity:.2}50%{transform:scale(1.08);opacity:.55}}
+@keyframes scan{0%{transform:translateX(0);opacity:0}10%,85%{opacity:.3}100%{transform:translateX(520px);opacity:0}}
+.flow{animation:flow 14s linear infinite}
+.orbit{animation:orbit 32s linear infinite;transform-origin:0px 0px}
+.orbit-back{animation:orbitBack 44s linear infinite;transform-origin:0px 0px}
+.pulse{animation:pulse 10s ease-in-out infinite}
+.halo{animation:halo 12s ease-in-out infinite;transform-origin:0px 0px}
+.scan{animation:scan 20s linear infinite}
+@media(prefers-reduced-motion:reduce){.flow,.orbit,.orbit-back,.pulse,.halo,.scan{animation:none!important}}
+</style><text x="32" y="39" fill="#68E6FF" font-size="19" font-weight="600" letter-spacing="1.8">CURRENT DIRECTION</text><text x="32" y="91" fill="#EAF2FF" font-size="36" font-weight="600" letter-spacing=".4" data-role-title="true">ASPIRING AI ENGINEER</text><text x="32" y="132" fill="#A6B4D0" font-size="23" font-weight="400" >Python · Machine Learning · Generative AI</text><path d="M32 177H568" fill="none" stroke="#23314B" stroke-width="1.5"/><path d="M32 177H568" fill="none" stroke="#68E6FF" stroke-width="2" stroke-dasharray="28 212" class="flow" style="animation-delay:-3s" opacity=".65"/><circle cx="32" cy="177" r="3" fill="#68E6FF" /><circle cx="300" cy="177" r="3" fill="#68E6FF" /><circle cx="568" cy="177" r="3" fill="#68E6FF" /></g></svg>

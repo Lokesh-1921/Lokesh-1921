@@ -15,13 +15,20 @@ NS='{http://www.w3.org/2000/svg}'
 class BrandTests(unittest.TestCase):
     def test_explicit_static_assets_contain_no_animation_instructions(self):
         files=list((ROOT/'assets').rglob('*static-*.svg'))
-        self.assertEqual(len(files),12)
+        self.assertTrue(files)
         for file in files:
             with self.subTest(asset=file.name):
                 body=file.read_text()
                 self.assertNotIn('@keyframes',body)
                 self.assertNotIn('animation:',body)
                 self.assertNotIn('animation-delay:',body)
+        for asset in (ROOT/'assets').rglob('*.svg'):
+            if 'contribution-snake' in asset.name or '-static-' in asset.name:
+                continue
+            if '@keyframes' in asset.read_text():
+                theme=asset.stem.rsplit('-',1)[-1]
+                fallback=asset.with_name(asset.stem.rsplit('-',1)[0]+'-static-'+theme+'.svg')
+                self.assertTrue(fallback.is_file(),f'Missing explicit motion fallback for {asset.name}')
 
     def test_role_has_one_immutable_heading_in_every_variant(self):
         for theme,palette in PALETTES.items():

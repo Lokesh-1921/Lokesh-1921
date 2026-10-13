@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="144" viewBox="0 0 600 144" role="img" aria-labelledby="title desc"><title id="title">Aspiring AI Engineer</title><desc id="desc">One static role heading with decorative animated signals. Python, machine learning, generative AI. No animated or stacked role text.</desc><g font-family="Arial, Helvetica, sans-serif"><style>
-@keyframes signal{to{stroke-dashoffset:-200}}
-@keyframes breathe{0%,100%{opacity:.45}50%{opacity:.8}}
-.signal{animation:signal 16s linear infinite}
-.breathe{animation:breathe 10s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.signal,.breathe{animation:none!important}}
-</style><text x="300.0" y="55" fill="#EAF2FF" font-size="32" font-weight="600" text-anchor="middle" letter-spacing="1.2" data-role-title="true">ASPIRING AI ENGINEER</text><text x="300.0" y="91" fill="#A6B4D0" font-size="23" font-weight="400" text-anchor="middle">Python · Machine Learning · Generative AI</text><path d="M212.0 122H388.0" stroke="#23314B"/><path d="M212.0 122H388.0" stroke="#68E6FF" stroke-width="2" stroke-dasharray="6 170" class="signal"/><circle cx="212.0" cy="122" r="3" fill="#68E6FF" fill-opacity=".65"/><circle cx="300.0" cy="122" r="3" fill="#68E6FF" fill-opacity=".65"/><circle cx="388.0" cy="122" r="3" fill="#68E6FF" fill-opacity=".65"/></g></svg>
