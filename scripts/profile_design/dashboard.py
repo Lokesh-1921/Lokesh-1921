@@ -13,12 +13,13 @@ def dashboard(data, theme, mobile=False):
     p=PALETTES[theme]
     w,h=(600,940) if mobile else (1200,620)
     days=data['days']
+    authorized=data.get('activity_source')=='authenticated-graphql'
     values=[('PUBLIC REPOSITORIES',len(data['repositories'])),
             ('CONTRIBUTIONS / LAST YEAR',sum(d['count'] for d in days)),
             ('ACTIVE CALENDAR DAYS',sum(d['count']>0 for d in days))]
     labels=[['PUBLIC','REPOSITORIES'],['CONTRIBUTIONS','LAST YEAR'],['ACTIVE DAYS','IN THE CALENDAR']]
     body=surface(p,w,h)+motion(w)
-    body+=text(28,44,'PUBLIC GITHUB / DAILY SNAPSHOT',22,p['cyan'],600,'letter-spacing="1"')
+    body+=text(28,44,'ACCOUNT ACTIVITY / VERIFIED SNAPSHOT' if authorized else 'PUBLIC GITHUB / DAILY SNAPSHOT',22,p['cyan'],600,'letter-spacing="1"')
     for i,(_,value) in enumerate(values):
         x,y=(28,76+i*136) if mobile else (28+i*390,80)
         body+=rect(x,y,544 if mobile else 364,115 if mobile else 174,p['panel'],p['border'])
@@ -56,8 +57,8 @@ def dashboard(data, theme, mobile=False):
     if maximum:
         body+='<g clip-path="url(#panel-clip)">'+rect(28,cy+27,2,84,p['cyan'],radius=1,extra='class="scan" opacity=".06"')+'</g>'
     body+=trace(p,28,h-57,w-56,9)
-    body+=text(28,h-25,'SNAPSHOT / '+data['updated_at'][:10]+' UTC',21 if mobile else 19,p['muted'])
-    if not mobile:body+=text(w-28,h-25,'PUBLIC DATA / NO RANKS / NO ESTIMATES',18,p['muted'],400,'text-anchor="end"')
+    body+=text(28,h-25,'UPDATED / '+data['updated_at'][:16].replace('T',' ')+' UTC',21 if mobile else 19,p['muted'])
+    if not mobile:body+=text(w-28,h-25,'AUTHENTICATED TOTAL / NO ESTIMATES' if authorized else 'PUBLIC DATA / NO RANKS / NO ESTIMATES',18,p['muted'],400,'text-anchor="end"')
     desc='; '.join(f'{label.lower()}: {value}' for label,value in values)
-    desc+='. Primary languages count non-fork project repositories and exclude this profile. Weekly bars show actual calendar contribution counts. Updated '+data['updated_at'][:10]+'.'
+    desc+='. Primary languages count non-fork project repositories and exclude this profile. Weekly bars show actual calendar contribution counts. Source: '+('authenticated owner calendar (daily totals only)' if authorized else 'public GitHub calendar')+'. Updated '+data['updated_at']+'.'
     return svg(w,h,body,'HUMAN / GitHub intelligence dashboard',desc)

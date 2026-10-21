@@ -58,19 +58,19 @@ script, embedded HTML in SVGs, remote font, image widget, or simulated interacti
 
 ## Honest data and secure automation
 
-The existing daily refresh remains at **09:47 IST** (04:17 UTC), with manual and relevant source-change triggers.
-The public-page collector paginates repository listings and requires calendar counts to match GitHub's
-displayed annual total. Changed markup and partial data fail closed, retaining the last verified images.
+The refresh runs **hourly** (at minute 17 UTC, subject to GitHub Actions delays), with manual and relevant source-change triggers. By default it uses public GitHub calendar data. If the account owner installs an Actions secret named `PROFILE_STATS_TOKEN` with the `read:user` scope, the dashboard uses the authenticated account-owner contribution calendar and includes private daily counts when the GitHub API exposes them.
+The public-page collector paginates repository listings and requires public calendar counts to match GitHub's
+displayed annual total. Authenticated GraphQL responses are checked for owner identity, complete daily counts, unique dates, valid levels and matching annual totals. Only daily aggregate counts are retained; private repository names and identities are never exported. Changed markup and partial data fail closed, retaining the last verified images.
 
 The snapshot stores language/fork/profile flags and actual daily counts. Unneeded repository identifiers
 are excluded. Primary language shares count non-fork project repositories, excluding the profile; they
 are not byte shares, commit shares, or measures of mastery. Empty weeks produce no positive activity bars.
 No rank, streak estimate, trophy, visitor count, or achievement widget is used.
 
-The generation job has contents: read and no persisted checkout credential. The separate publishing job
+The generation job has contents: read and no persisted checkout credential. An optional private-profile read token is passed solely to the own-data collection step; never to other actions. The separate publishing job
 has contents: write and stages only assets/generated/. All actions retain their verified full commit pins,
-Node 24 runtime versions, and Ubuntu 24.04 runners. The built-in token is sufficient; no PAT or new secret is needed.
-Refresh failures emit warnings. Validated initial assets are committed, preventing first-run broken paths.
+Node 24 runtime versions, and Ubuntu 24.04 runners. The built-in token is sufficient for public-only statistics. A personal token with only `read:user` is needed to include owner-visible restricted contributions.
+Refresh failures are reported as errors and retain the previous verified images. Validated initial assets are committed, preventing first-run broken paths.
 Generated changes cannot recursively trigger the refresh workflow.
 
 The read-only validation workflow rebuilds the brand and README and checks for drift before validation/tests.

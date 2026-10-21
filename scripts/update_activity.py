@@ -7,6 +7,7 @@ from datetime import datetime, timezone
 from html import escape
 from html.parser import HTMLParser
 import json
+import os
 from pathlib import Path
 import re
 from urllib.parse import urljoin, urlsplit
@@ -14,6 +15,7 @@ from urllib.request import Request, urlopen
 
 from profile_design.shared import PALETTES, text, surface, static_body
 from profile_design.dashboard import dashboard, project_languages
+from authenticated_activity import fetch_authenticated_calendar
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -124,11 +126,17 @@ def collect(owner):
         url = parser.next_page
     if not items or len({i['name'] for i in items}) != len(items):
         raise ValueError('Empty or duplicated repository discovery')
-    days = parse_calendar(fetch(f'https://github.com/users/{owner}/contributions'))
+    token = os.environ.get('PROFILE_STATS_TOKEN', '').strip()
+    if token:
+        days = fetch_authenticated_calendar(owner, token)
+        activity_source = 'authenticated-graphql'
+    else:
+        days = parse_calendar(fetch(f'https://github.com/users/{owner}/contributions'))
+        activity_source = 'public-html'
     # The dashboard needs language/fork/profile flags, not identifying project slugs.
     metadata=[dict(language=item['language'],fork=item['fork'],
                    is_profile=item['name'].lower()==owner.lower()) for item in items]
-    return dict(owner=owner, updated_at=datetime.now(timezone.utc).isoformat(timespec='seconds'), repositories=metadata, days=days)
+    return dict(owner=owner, updated_at=datetime.now(timezone.utc).isoformat(timespec='seconds'), repositories=metadata, days=days, activity_source=activity_source)
 
 
 def svg(width, height, content, title, description):
@@ -185,7 +193,7 @@ def main():
         parser.error('Invalid GitHub username')
     data=json.loads(args.snapshot.read_text()) if args.snapshot else collect(args.owner)
     render(data,args.output)
-    print(f'Rendered {len(data["repositories"])} public repositories and {sum(d["count"] for d in data["days"])} contributions. Snapshot: {data["updated_at"]}')
+    print(f'Rendered {len(data["repositories"])} public repositories and {sum(d["count"] for d in data["days"])} contributions. Source: {data.get("activity_source", "public-html")}. Snapshot: {data["updated_at"]}')
 
 
 if __name__=='__main__':

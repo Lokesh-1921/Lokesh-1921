@@ -2,7 +2,7 @@ name: Refresh profile visuals
 
 on:
   schedule:
-    - cron: '17 4 * * *'
+    - cron: '17 * * * *'
   workflow_dispatch:
   push:
     branches: [main]
@@ -31,9 +31,11 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Refresh real public activity
+      - name: Refresh verified contribution calendar
         id: activity
         continue-on-error: true
+        env:
+          PROFILE_STATS_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN }}
         run: python3 scripts/update_activity.py
 
       - name: Generate light and dark contribution snakes
@@ -60,7 +62,7 @@ jobs:
           SNAKE_RESULT: ${{ steps.snake.outcome }}
         run: |
           if [ "$ACTIVITY_RESULT" != success ]; then
-            echo '::warning::Activity refresh failed. The last verified dashboard and static calendar were retained.'
+            echo '::error::Activity refresh failed. The last verified dashboard and static calendar were retained.'
           fi
           if [ "$SNAKE_RESULT" != success ]; then
             echo '::warning::Snake refresh failed. The previously generated animations were retained.'
@@ -71,6 +73,9 @@ jobs:
             echo "Contribution snake: $SNAKE_RESULT"
             echo 'Only validated assets are published. Failed updates retain the last good images.'
           } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$ACTIVITY_RESULT" != success ]; then
+            exit 1
+          fi
 
       - name: Upload verified images and public snapshot
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6, Node 24
